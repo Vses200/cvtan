@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}Tj - cv ContactUs{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+{% include 'main/partials/messages.html' %}
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+    <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">User Profiles</h1><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="lightBg">
+        <div class="container">
+          <ul>
+            {% for item in object_list %}
+             {% if item.user.is_superuser%}
+             <li><a href="" class="btn btn-info col col-12"> 
+              User : {{item.user.username}}
+
+            </a></li>
+            <li>
+             <div class="container">
+               <div class="row">
+             <a href="{%url 'main:updateUserProfile' item.pk %}" class="btn btn-primary col col-12">Edit</a>
+             
+               </div>
+             </div>
+
+           </li><br>
+             {%endif%}
+            {%endfor%}
+        </ul>
+           
+           
+            
+        </div>
+      </div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+    {%endblock%}

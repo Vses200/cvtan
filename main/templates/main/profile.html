@@ -1,0 +1,86 @@
+{% extends 'main/base.html' %}"
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}Tj - cv Home{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+{% block content %}
+ <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="bannerSection">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-auto order-md-last">
+              <div class="bannerUserImg">
+                {% if user.userprofile.avatar %}
+                <img src="{{user.userprofile.avatar.url}}" alt="...">
+                {%else%}
+                <img src="{% static 'images/profile.jpg' %}" alt="...">
+                {%endif%}
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-3">Hi,{{user.first_name|title}} {{user.last_name|title}},</h1>
+                <p>Welcome to your profile , Here you can edit your information.</p>
+                <h2>You can also CONTACT ME using the link above to HIRE.</h2>
+                <h3>I hope You liked my work.</h3>
+                <div class="bannerBtnCol">
+                    <div class="row">
+                      <div class="col-auto">
+                        <a href="{% url 'main:logout' %}" class="btn btnOutline">Log Out</a>
+                        <a href="{% url 'main:editprofile' %}" class="btn btnOutline">Edit Profile</a>
+                        <a href="{% url 'main:password' %}" class="btn btnOutline">Change Password</a>
+                      </div>
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-7"></div>
+          <div class="col-2">
+            <a class="btn btn-success" href="{%url 'main:changedp'%}">Change</a>
+          </div>
+          <div class="col col-1"></div>
+          <div class="col-2">
+            <a class="btn btn-danger" href="{%url 'main:deletedp'%}">Delete</a>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <hr>
+    
+    
+    <!-- ================================
+    End Content
+    ================================= -->
+{% endblock %}   
